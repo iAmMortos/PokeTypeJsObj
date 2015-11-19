@@ -200,5 +200,13 @@ var pokeTypes = {
             return img;
         }
         return "No Such Type: " + str;
+    },
+    'getImageSrc':function(str)
+    {
+        if (str.length >= 3 && this.all.indexOf(str.toLowerCase().substring(0,3)) !== -1)
+        {
+            return pokeTypes[str].img;
+        }
+        return "No Such Type: " + str;
     }
 };
