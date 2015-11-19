@@ -195,7 +195,7 @@ var pokeTypes = {
     {
         if (str.length >= 3 && this.all.indexOf(str.toLowerCase().substring(0,3)) !== -1)
         {
-            return $("<img>").attr("src", types[str].img);
+            return $("<img>").attr("src", pokeTypes[str].img);
         }
         return "No Such Type: " + str;
     }
