@@ -1,4 +1,6 @@
 var pokeTypes = {
+    
+    // each 3-letter type, its resistances, weaknesses, immunities, and raw image data
     'fai':{'resist':['fig','bug','dar'],
            'weak':['poi','ste'],
            'immune':['dra'],
@@ -89,8 +91,14 @@ var pokeTypes = {
            'immune':['gho'],
            'img':"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAQCAYAAABQrvyxAAABM0lEQVR4nNWWO27CQBBAn4NryhRcBXGAvYG7rMRh6CNRWoJUucEgKiSUq1gW4gYUToFGWpv9YGwp8at2xvO3d70ZQGFtwwT53u2yvLC2+frccJvN/7qeXtT1FaDJAW6zuSomw/n8A0DeVa5WSxaLdwCq6gIQlJVn9SqnYsb8tEblzU3oPvAVtF5/POh8diG9yq7eF9OXN1RjqwEfrrOLMQZjjNcupPcV142Zytsl2UCMstwPcR+FZAMi0jtoyEcn7E56KNEGhiby+cdivjKsPG3SH2MMIoKItE4QGP+ze3kPiEh0QyrPbkYIv51YrmQD3Ql25VjisfENo9WA/t2q6tIqKiS7R2lZ7lt2obUvZmrt5tEalaywtim320leJQ6n430T1/X1obP/zuF0BCCDaV+nfwERD6ivKB0NBwAAAABJRU5ErkJggg=="
           },
+   
+    // The list of all 3-letter types for iteration
     'all':['fai','fir','wat','ele','gra','ice','fig','poi','gro','fly','psy','bug','roc','gho','dra','dar','ste','nor'],
+    
+    // Dictionary to convert 3-letter type name to the long name
     'long':{'fai':'Fairy', 'fir':'Fire', 'wat':'Water', 'ele':'Electric', 'gra':'Grass', 'ice':'Ice', 'fig':'Fighting', 'poi':'Poison', 'gro':'Ground', 'fly':'Flying', 'psy':'Psychic', 'bug':'Bug', 'roc':'Rock', 'gho':'Ghost', 'dra':'Dragon', 'dar':'Dark', 'ste':'Steel', 'nor':'Normal'},
+    
+    // Returns a list of the types weak to the given type
     'weakTo':function(str)
     {
         if (str.length >= 3 && this.all.indexOf(str.toLowerCase().substring(0,3)) !== -1)
@@ -106,6 +114,8 @@ var pokeTypes = {
         }
         return "No Such Type: " + str;
     },
+    
+    // Returns a list of the types resistant to the given type
     'strongTo':function(str)
     {
         if (str.length >= 3 && this.all.indexOf(str.toLowerCase().substring(0,3)) !== -1)
@@ -121,6 +131,8 @@ var pokeTypes = {
         }
         return "No Such Type: " + str;
     },
+    
+    // Returns a list of types immune to the given type
     'immuneTo':function(str)
     {
         if (str.length >= 3 && this.all.indexOf(str.toLowerCase().substring(0,3)) !== -1)
@@ -136,6 +148,8 @@ var pokeTypes = {
         }
         return "No Such Type: " + str;
     },
+    
+    // Returns a list of types that do super effective damage to the given type
     'superEffectiveAgainst':function(str)
     {
         if (str.length >= 3 && this.all.indexOf(str.toLowerCase().substring(0,3)) !== -1)
@@ -148,6 +162,8 @@ var pokeTypes = {
         }
         return "No Such Type: " + str;
     },
+    
+    // Returns a list of types that are "not very effective" against the given type
     'notVeryEffectiveAgainst':function(str)
     {
         if (str.length >= 3 && this.all.indexOf(str.toLowerCase().substring(0,3)) !== -1)
@@ -160,6 +176,8 @@ var pokeTypes = {
         }
         return "No Such Type: " + str;
     },
+    
+    // Returns a list of types that cannot damage the given type due to immunity
     'thatDontAffect':function(str)
     {
         if (str.length >= 3 && this.all.indexOf(str.toLowerCase().substring(0,3)) !== -1)
@@ -172,6 +190,8 @@ var pokeTypes = {
         }
         return "No Such Type: " + str;
     },
+    
+    // Returns the damage multiplier that results from the given attack and defense types
     'getDamage':function(atk, def)
     {
         if (atk.length >= 3 && def.length >= 3 &&
@@ -191,6 +211,8 @@ var pokeTypes = {
         }
         return -1;
     },
+    
+    // Returns an <img> DOM object containing the given type's sprite
     'getImage':function(str)
     {
         if (str.length >= 3 && this.all.indexOf(str.toLowerCase().substring(0,3)) !== -1)
@@ -201,6 +223,8 @@ var pokeTypes = {
         }
         return "No Such Type: " + str;
     },
+    
+    // Returns just the src string containing the raw image data for the given type's sprite
     'getImageSrc':function(str)
     {
         if (str.length >= 3 && this.all.indexOf(str.toLowerCase().substring(0,3)) !== -1)
